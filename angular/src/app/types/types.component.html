@@ -1,0 +1,47 @@
+<br>
+<br>
+<h1 style="text-align: center;font-size: 80px;">Types</h1>
+<br>
+<br>
+<div style="text-align: center;"><input #in1 type="text" placeholder=" voorbeeld: Types">
+    <button (click)="Zoek(in1.value)">Zoek</button>
+    <br>
+    <br>
+    <h2>Zoek Types op onderstaande filters.</h2>
+    <select class="form-control" [(ngModel)]="viewnr">
+        <option value="" disabled selected>Select view count</option>
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+    </select>
+    <select class="form-control" [(ngModel)]="sortoption" style="margin-left: 1%;">
+        <option value="" disabled selected>Sort option</option>
+        <option value="name">name</option>
+        <option value="id">id</option>
+    </select>
+    <button (click)="Zoek('all')" style="margin-left: 1%;">Zoek Types</button>
+</div>
+<br>
+<br>
+<div *ngIf="ZoekOpdrachten!=null" style="text-align: center;">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Hebben dit type:</th>
+            <th>Sterk tegen:</th>
+            <th>Zwak tegen:</th>
+        </tr>
+        <tr *ngFor="let item of ZoekOpdrachten">
+            <td>{{item.id}}</td>
+            <td>{{item.type}}</td>
+            <td><span *ngFor="let poke of item.hasType">{{poke.name}}, </span></td>
+            <td><span *ngFor="let poke of item.strongAgainst">{{poke.type}}, </span></td>
+            <td><span *ngFor="let poke of item.weakAgainst">{{poke.type}}, </span></td>
+        </tr>
+    </table>
+
+</div>
+<br>
+<br>
+<div style="margin-left: 50%;"><button [disabled]="isDisabled==true" (click)="Page('-')" style="margin-left: -10%;"><<</button> <button (click)="Page('+')"  style="margin-left: 10%;">>></button></div>

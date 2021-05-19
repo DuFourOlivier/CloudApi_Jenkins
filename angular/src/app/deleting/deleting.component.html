@@ -1,0 +1,21 @@
+<br>
+<br>
+<h1 style="text-align: center;font-size: 80px;">Deleting</h1>
+<br>
+<br>
+<div style="text-align: center;" class="control">
+    <p>Kies wat je wilt verwijderen</p>
+    <select class="form-control" [(ngModel)]="ShowOption">
+        <option value="1">Pokémon</option>
+        <option value="2">Type</option>
+        <option value="3">Moves</option>
+    </select>
+</div>
+<br>
+<br>
+<div *ngIf="ShowOption==1" style="margin-left: 38%;">
+    <p style="font-size: 20px;">Voer het id in van de pokemon die u wenst te verwijderen.</p><input type="number" placeholder="1" style="margin-left: 14%;" #in1>
+    <br>
+    <br>
+    <button (click)="Delete(in1.value)" style="margin-left: 18%;">Delete</button>
+</div>
