@@ -1,0 +1,9 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create a new S3 bucket
+      aws_s3:
+        ec2_region: us-east-1
+        bucket: demo-bucket
+        mode: create
+      
