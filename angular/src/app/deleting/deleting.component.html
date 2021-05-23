@@ -17,5 +17,17 @@
     <p style="font-size: 20px;">Voer het id in van de pokemon die u wenst te verwijderen.</p><input type="number" placeholder="1" style="margin-left: 14%;" #in1>
     <br>
     <br>
-    <button (click)="Delete(in1.value)" style="margin-left: 18%;">Delete</button>
+    <button (click)="DeletePokemon(in1.value)" style="margin-left: 18%;">Delete</button>
+</div>
+<div *ngIf="ShowOption==2" style="margin-left: 38%;">
+    <p style="font-size: 20px;">Voer het id in van het type die u wenst te verwijderen.</p><input type="text" placeholder="1" style="margin-left: 14%;" #in2>
+    <br>
+    <br>
+    <button (click)="DeleteType(in2.value)" style="margin-left: 18%;">Delete</button>
+</div>
+<div *ngIf="ShowOption==3" style="margin-left: 38%;">
+    <p style="font-size: 20px;">Voer het id in van de move die u wenst te verwijderen.</p><input type="text" placeholder="1" style="margin-left: 14%;" #in3>
+    <br>
+    <br>
+    <button (click)="DeleteMove(in3.value)" style="margin-left: 18%;">Delete</button>
 </div>

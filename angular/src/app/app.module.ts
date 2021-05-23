@@ -8,8 +8,8 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { HomeComponent } from './home/home.component';
 import { MovesComponent } from './moves/moves.component';
 import { TypesComponent } from './types/types.component';
-import { EvolutionComponent } from './evolution/evolution.component';
-import { StatsComponent } from './stats/stats.component';
+import { EvolutionComponent } from './pokéQuiz/pokéQuiz.component';
+import { StatsComponent } from './Put/Put.component';
 import { AddingComponent } from './adding/adding.component';
 import { DeletingComponent } from './deleting/deleting.component';
 export const routerConfig: Routes = [
@@ -30,7 +30,7 @@ export const routerConfig: Routes = [
     component: TypesComponent
   },
   {
-    path: 'Evolution',
+    path: 'pokéQuiz',
     component: EvolutionComponent
   },  
   {
@@ -47,12 +47,12 @@ export const routerConfig: Routes = [
   },
   {
       path: '',
-      redirectTo: '/home',
+      redirectTo: '/Home',
       pathMatch: 'full'
   },
   {
       path: '**',
-      redirectTo: '/home',
+      redirectTo: '/Home',
       pathMatch: 'full'
   }
 ];

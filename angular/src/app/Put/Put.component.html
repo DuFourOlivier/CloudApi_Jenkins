@@ -1,10 +1,10 @@
 <br>
 <br>
-<h1 style="text-align: center;font-size: 80px;">Adding</h1>
+<h1 style="text-align: center;font-size: 80px;">Update</h1>
 <br>
 <br>
 <div style="text-align: center;" class="control">
-    <p style="font-size: 20px;">Kies wat je wilt toevoegen</p>
+    <p style="font-size: 20px;">Kies wat je wilt Updaten</p>
     <br>
     <select class="form-control" [(ngModel)]="ShowOption">
         <option value="1">Pokémon</option>
@@ -15,6 +15,12 @@
 <br>
 <br>
 <div *ngIf="ShowOption==1" style="margin-left: 45%;">
+      <p style="font-size: 20px;">Welke pokemon wilt u aanpassen?</p>
+    <select [(ngModel)]="selectedpokemon" style="margin-left: 1%;">
+        <option *ngFor="let item of Getpokemons" [value]="item.id">
+          {{item.name}}
+        </option>
+    </select>
     <p style="font-size: 20px;">Naam</p><input type="text" placeholder="Bulbasaur" style="margin-left: 1%;" #inNaam>
     <br>
     <br>
@@ -43,7 +49,7 @@
     <br>
     <br>
     <button
-        (click)="AddPokemon(inNaam.value,in1.value,in2.value,in3.value,in4.value,in5.value,in6.value,Toevolve.value,LvEvolve.value,Previous.value)"
+        (click)="UpdatePokemon(inNaam.value,in1.value,in2.value,in3.value,in4.value,in5.value,in6.value,Toevolve.value,LvEvolve.value,Previous.value)"
         style="margin-left: 5%;">Submit</button>
     <br>
     <br>

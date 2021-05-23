@@ -11,7 +11,16 @@ ShowOption:number=1;
   constructor(private http:MyApiService) { }
 
   ngOnInit(): void {}
-  Delete(id:number){
+  DeletePokemon(id:number){
   console.log(id);
   this.http.deletePokemon(id);}
+  
+  DeleteType(id:number){
+  this.http.deleteType(id);}
+  
+  DeleteMove(id:number){
+  this.http.deleteMove(id);}
 }
+
+
+

@@ -41,10 +41,63 @@ export class MyApiService {
         console.log('An error occurred:', err.error);
         this.ERROR=err.error.title;
       });}
-  
+      async addType(type:IType){
+        try {
+          return this.http.post<IType>(this.LinkApi + "Type", { type: (type.type), hasType: (type.hasType), strongAgainst: (type.strongAgainst), weakAgainst: (type.weakAgainst) })
+            .toPromise();
+        } catch (err) {
+          // simple logging, but you can do a lot more, see below
+          console.log('An error occurred:', err.error);
+          this.ERROR = err.error.title;
+        }}
+        async addMove(move:IMove){
+          try {
+            return this.http.post<IMove>(this.LinkApi + "Moves/", { name: (move.name), damage: (move.damage), effect: (move.effect), canLearn: (move.canLearn),type:(move.type) })
+              .toPromise();
+          } catch (err) {
+            // simple logging, but you can do a lot more, see below
+            console.log('An error occurred:', err.error);
+            this.ERROR = err.error.title;
+          }}
+          async updatePokemon(poke:IPokemon, id:Number){
+            try {
+              return this.http.put<IPokemon>(this.LinkApi + "pokémon/"+id, {id:(poke.id),name:(poke.name),statistics:(poke.statistics),evolvesTo:(poke.evolvesTo),type:(poke.type),moves:(poke.moves),url:(poke.url)})
+                .toPromise();
+            } catch (err) {
+              // simple logging, but you can do a lot more, see below
+              console.log('An error occurred:', err.error);
+              this.ERROR = err.error.title;
+            }}
+        async updateType(type:IType){
+          try {
+            return this.http.put<IType>(this.LinkApi + "Type/"+type.type, { type: (type.type), hasType: (type.hasType), strongAgainst: (type.strongAgainst), weakAgainst: (type.weakAgainst) })
+              .toPromise();
+          } catch (err) {
+            // simple logging, but you can do a lot more, see below
+            console.log('An error occurred:', err.error);
+            this.ERROR = err.error.title;
+          }}
+
+          async updateMove(move:IMove){
+            try {
+              return this.http.put<IMove>(this.LinkApi + "Moves/"+move.id, {id:(move.id) ,name: (move.name), damage: (move.damage), effect: (move.effect), canLearn: (move.canLearn),type:(move.type)})
+                .toPromise();
+            } catch (err) {
+              // simple logging, but you can do a lot more, see below
+              console.log('An error occurred:', err.error);
+              this.ERROR = err.error.title;
+            }}
 
    deletePokemon(id:number){
     return this.http.delete(this.LinkApi+"pokémon/"+id)
+      .toPromise();
+   }
+   deleteMove(id:number){
+    return this.http.delete(this.LinkApi+"Moves/"+id)
+      .toPromise();
+   }
+   deleteType(id:number){
+    return this.http.delete(this.LinkApi+"Type/"+id)
       .toPromise();
    }
   //moves
@@ -66,6 +119,7 @@ getTypes(zoekOpdracht: string="Type"){
   return this.http.get<IType[]>(this.LinkApi + zoekOpdracht)
           .toPromise();
 }
+
 
 
 

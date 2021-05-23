@@ -1,0 +1,101 @@
+<div style="margin-left: 25%; margin-right: 25%; margin-top: 5%;text-align: center;">
+    <div class="notification is-link is-light">
+        <div *ngIf="Page==1" style="text-align: center;">
+            <h1 class="title">{{TitleQuiz}}</h1>
+            <h2 class="subtitle">{{SubTitle}}</h2>
+
+            <br>
+            <div>
+                <button class="button is-success is-narrow" (click)="Startpage()">{{Button_Start}}</button>
+            </div>
+        </div>
+        <div class="notification" *ngIf="Page==2" id="VRAAG1">
+            <h1 class="title">{{TitlePage2}}</h1>
+            <h2 class="subtitle">{{Question}}</h2>
+            <img src='{{linkFoto}}' alt='image'>
+            <div class="control">
+                <select class="form-control" [(ngModel)]="Anwser1">
+                    <option value="1">{{q1}}</option>
+                    <option value="2">{{q2}}</option>
+                    <option value="3">{{q4}}</option>
+                    <option value="4">{{q5}}</option>
+                </select>
+            </div>
+            <br>
+            <!-- <button  class="button is-success is-narrow" (click)="PreviousPage()"
+      >{{GoBack}}</button> -->
+            <button class="button is-success is-narrow" (click)="NextPage()">{{GoForward}}</button>
+        </div>
+        <div class="notification" *ngIf="Page==3" id="VRAAG2">
+            <h1 class="title">{{TitlePage3}}</h1>
+            <h2 class="subtitle">
+                {{Question}}
+            </h2>
+            <img src='{{linkFoto}}' alt='image'>
+            <div class="control">
+                <select class="form-control" [(ngModel)]="Anwser2">
+                    <option value="1">{{q4}}</option>
+                    <option value="2">{{q1}}</option>
+                    <option value="3">{{q3}}</option>
+                    <option value="4">{{q2}}</option>
+                </select>
+            </div>
+            <br>
+            <button class="button is-success is-narrow" (click)="PreviousPage()">{{GoBack}}</button>
+            <button class="button is-success is-narrow" (click)="NextPage()" style="margin-left: 5%;">{{GoForward}}</button>
+        </div>
+        <div class="notification" *ngIf="Page==4" id="VRAAG3">
+            <h1 class="title">{{TitlePage4}}</h1>
+            <h2 class="subtitle">
+                {{Question}}
+            </h2>
+            <img src='{{linkFoto}}' alt='image'>
+            <div class="control">
+                <select class="form-control" [(ngModel)]="Anwser3">
+                    <option value="1">{{q5}}</option>
+                    <option value="2">{{q2}}</option>
+                    <option value="3">{{q3}}</option>
+                    <option value="4">{{q1}}</option>
+                </select>
+            </div>
+            <br>
+            <button class="button is-success is-narrow" (click)="PreviousPage()">{{GoBack}}</button>
+            <button class="button is-success is-narrow" (click)="NextPage()"style="margin-left: 5%;">{{GoForward}}</button>
+        </div>
+        <div class="notification" *ngIf="Page==5" id="VRAAG4">
+            <h1 class="title">{{TitlePage5}}</h1>
+            <h2 class="subtitle">
+                {{Question}}
+            </h2>
+            <img src='{{linkFoto}}' alt='image'>
+            <div class="control">
+                <select class="form-control" [(ngModel)]="Anwser4">
+                    <option value="1">{{q5}}</option>
+                    <option value="2">{{q2}}</option>
+                    <option value="3">{{q3}}</option>
+                    <option value="4">{{q1}}</option>
+                </select>
+            </div>
+            <br>
+            <button class="button is-success is-narrow" (click)="PreviousPage()"
+                GoBack:string="Back">{{GoBack}}</button>
+            <button class="button is-success is-narrow" (click)="Result()"style="margin-left: 5%;">{{Submit}}</button>
+        </div>
+        <div class="notification" *ngIf="Page==6" id="Res">
+            <h1 class="title">{{TitlePage6}}</h1>
+            <h2>Beste {{Name}}, je behaalde {{Resultaat}}/{{TotalQuestions}}!</h2>
+            <br>
+            <div *ngIf="Resultaat<2">
+                <h2>Oei, het wordt dringend tijd dat je wat Pokémon kijkt!</h2>
+            </div>
+            <div *ngIf="Resultaat==2">
+                <h2>Niet slecht, maar voor een Pokémon kenner kan je beter!</h2>
+            </div>
+            <div *ngIf="Resultaat>2">
+                <h2>Pika! Pika! Je bent een echte kenner!</h2>
+            </div>
+        </div>
+
+
+    </div>
+</div>
