@@ -5,13 +5,20 @@
   user: root
 
   tasks:
-          - name : Labo1 installeren van nc
-            yum:
-                    name:
-                            - nc
-                    state: latest
-
-          - name: Labo1 group toevoegen genaamd userWithSudo
-            group:
-                    name: userWithSudo
-                    state: present
+    - name: Install apache packages 
+      yum:
+        name: httpd
+        state: present
+    - name: ensure httpd is running
+      service:
+        name: httpd 
+        state: started
+    - name: Open port 80 for http access
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+    - name: Restart the firewalld service to load in the firewall changes
+      service: 
+        name: firewalld 
+        state: restarted
