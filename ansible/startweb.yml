@@ -1,0 +1,17 @@
+---
+#docker install
+
+- hosts: testserver
+  user: root
+
+  tasks:
+          - name: docker container
+            community.docker.docker_container:
+                   name: webserver
+                   image: nginx
+                   state: started
+                   restart: yes
+                   volumes:
+                           - /home:/usr/share/nginx/html
+                   ports:
+                           - 8080:80
