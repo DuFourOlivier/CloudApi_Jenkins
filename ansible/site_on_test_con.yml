@@ -1,11 +1,10 @@
 ---
 
 - hosts: testserver
-  gather_facts: False
   user: root
 
   tasks:
          - name: copying files to testing
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
-                   dest: /data/testing
+                   dest: /home/olivier/project/testomgeving
