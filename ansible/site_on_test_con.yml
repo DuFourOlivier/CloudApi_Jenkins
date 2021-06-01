@@ -6,5 +6,7 @@
   tasks:
          - name: copying files to testing
            copy:
-                   src: /var/jenkins_home/workspace/Angular/angular/dist/angular/*
-                   dest: /home/olivier/project/testomgeving/
+                   src: /var/jenkins_home/workspace/Angular/angular/dist/angular/
+                   dest: /home/olivier/project/testomgeving
+         - name: Move files to test
+           command: mv /home/olivier/project/testomgeving/angular/* /home/olivier/project/testomgeving/
