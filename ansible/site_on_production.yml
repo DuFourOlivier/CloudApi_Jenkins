@@ -4,7 +4,7 @@
   user: root
 
   tasks:
-         - name: copying files to testing
+         - name: copying files to production container
            copy:
                    src: /var/jenkins_home/workspace/Angular/angular/dist/angular/
                    dest: /home/olivier/project/productieomgeving/

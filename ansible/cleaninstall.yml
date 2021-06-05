@@ -5,59 +5,63 @@
   user: root
 
   tasks:
-         - name : epel installeren
+         - name : 1. Basic setup:epel installeren
            yum:
                    name:
                            - epel-release
-         - name: installeer yum utils
+         - name: 1. Basic setup:installeer yum utils
            yum:
                    name: yum-utils
                    state: latest
-         - name: installeer device-mapper-persistent-data
+         - name: 1. Basic setup:installeer device-mapper-persistent-data
            yum:
                    name: device-mapper-persistent-data
                    state: latest
-         - name: installeer lvm2
+         - name: 1. Basic setup:installeer lvm2
            yum:
                    name: lvm2
                    state: latest
-         - name: install python3
+         - name: 2. Dependencies for Docker:install python3
            command: "yum install -y python3"
          - name: install pythin pip
            command: "yum install -y python-pip"
 
-         - name: voeg de docker ce repo toe
+         - name: 3. Docker setup:voeg de docker ce repo toe
            get_url:
                    url: https://download.docker.com/linux/centos/docker-ce.repo
                    dest: /etc/yum.repos.d/docer-ce.repo
            become: yes
-         - name: enable docker edge repo
+         - name: 3. Docker setup:enable docker edge repo
            ini_file:
                    dest: /etc/yum.repos.d/docer-ce.repo
                    section: 'docker-ce-edge'
                    option: enabled
                    value: 0
            become: yes
-         - name: Installeer docker
+         - name: 4. Docker :Installeer docker
            package:
                    name: docker-ce
                    state: latest
            become: yes
-         - name: start docker service
+         - name: 4. Docker:start docker service
            service:
                    name: docker
                    state: started
                    enabled: yes
            become: yes
-         - name: installing docker sdk
+         - name: 4. Docker:installing docker sdk
            command: "pip install docker-py"
 
-         - name : docker gebruiker makern
+         - name : 4. Docker:docker gebruiker makern
            user:
                    name: dokwerker
                    comment: tunnel user
-         - name: add user to docker
+         - name: 4. Docker:add user to docker
            user:
                    name: dokwerker
                    groups: docker
                    append: yes
+         - name: 5. Docker:Creating Test Container
+           command: "docker run -d -p 9000:80 --name=testsite -v /home/olivier/project/testomgeving:/usr/local/apache2/htdocs --restart=always httpd:latest"
+         - name: 5. Docker:Creating Production Container
+           command: "docker run -d -p 9001:80 --name=productiesite -v /home/olivier/project/productieomgeving:/usr/local/apache2/htdocs --restart=always httpd:latest"
